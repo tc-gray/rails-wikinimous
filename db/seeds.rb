@@ -6,7 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+puts 'Clear all articles'
+Article.destroy_all
+puts 'DB cleared'
 
 10.times do
-  Article.create([{ title: Faker::Name.name }, { content: Faker::Movies::HarryPotter.quote }])
+  article = Article.create(
+    title: Faker::Movies::HarryPotter.book,
+    content: Faker::Movies::HarryPotter.quote
+  )
+  puts "#{article.title} was created"
 end
